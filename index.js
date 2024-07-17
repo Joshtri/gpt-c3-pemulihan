@@ -58,8 +58,6 @@ function getChurchInfo(namaGereja) {
   }
 }
 
-
-
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.urlencoded({ extended: true }));
@@ -73,20 +71,19 @@ app.post('/chat', async (req, res) => {
   const userMessage = req.body.message;
 
   if (!userMessage) {
-    return res.status(400).json({ error: 'Message is required in the request body' });
+    return res.status(400).json({ error: 'Pesan diperlukan dalam tubuh permintaan' });
   }
 
   let responseMessage;
 
-  const churchMatch = userMessage.match(/what is (.*) church/i);
-  if (churchMatch) {
-    const churchName = churchMatch[1].trim();
-    responseMessage = getChurchInfo(churchName);
+  const lowerCasedMessage = userMessage.toLowerCase();
+  if (lowerCasedMessage.includes('c3 pemulihan')) {
+    responseMessage = getChurchInfo("C3 Pemulihan");
   } else {
     try {
       const chatCompletion = await openai.chat.completions.create({
         messages: [
-          { role: 'system', content: 'You are a helpful assistant specialized in church activities.' },
+          { role: 'system', content: 'Anda adalah asisten yang membantu yang memiliki spesialisasi dalam aktivitas gereja.' },
           { role: 'user', content: userMessage }
         ],
         model: 'gpt-3.5-turbo',
@@ -94,7 +91,7 @@ app.post('/chat', async (req, res) => {
       responseMessage = chatCompletion.choices[0].message.content;
     } catch (error) {
       console.error('Error:', error);
-      return res.status(500).json({ error: 'Something went wrong' });
+      return res.status(500).json({ error: 'Terjadi kesalahan' });
     }
   }
 
@@ -102,5 +99,5 @@ app.post('/chat', async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server berjalan di http://localhost:${port}`);
 });
