@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat with OpenAI</title>
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+/>
+</head>
+<body>
+  <h1>C3 Pemulihan-GPT</h1>
+  <form action="/chat" method="POST">
+    <label for="message">Enter your message:</label><br>
+    <input type="text" id="message" name="message" required><br><br>
+    <button type="submit">Send</button>
+  </form>
+
+  <% if (response) { %>
+    <h2>Response from OpenAI:</h2>
+    <p><%= response %></p>
+  <% } %>
+</body>
+</html>
