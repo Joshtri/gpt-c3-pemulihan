@@ -18,46 +18,46 @@ const __dirname = path.dirname(__filename);
 
 const churchInfo = {
   "C3 Pemulihan": {
-    description: "C3 Pemulihan adalah sebuah gereja yang terletak di pusat kota. Gereja ini dikenal dengan pelayanan pemulihannya dan berkomitmen untuk membantu setiap orang menemukan dan memenuhi panggilan hidup mereka di dalam Kristus.",
-    address: "Jl. Merdeka No.123, Kupang",
-    pastor: "Pdt. John Doe",
-    contact: {
-      phone: "0812-3456-7890",
+    deskripsi: "C3 Pemulihan adalah sebuah gereja yang terletak di pusat kota. Gereja ini dikenal dengan pelayanan pemulihannya dan berkomitmen untuk membantu setiap orang menemukan dan memenuhi panggilan hidup mereka di dalam Kristus.",
+    alamat: "Jl. Merdeka No.123, Kupang",
+    pendeta: "Pdt. Charles",
+    kontak: {
+      nomor: "0812-3456-7890",
       email: "info@c3pemulihan.org"
     },
-    schedule: [
-      { event: "Ibadah Sore", day: "Minggu", time: "9:00 AM" },
-      { event: "Ibadah Pagi", day: "Minggu", time: "5:00 PM" },
-      { event: "Doa Puasa", day: "Sabtu", time: "7:00 PM" },
-      { event: "Connect Grup", day: "Selasa", time: "6:30 PM" },
-      { event: "Pelayanan Anak", day: "Minggu", time: "10:00 AM" },
-      { event: "Ibadah Remaja", day: "Jumat", time: "7:00 PM" },
-      { event: "Sekolah Alkitab", day: "Rabu", time: "6:00 PM" }
+    jadwal: [
+      { acara: "Ibadah Sore", hari: "Minggu", waktu: "9:00 AM" },
+      { acara: "Ibadah Pagi", hari: "Minggu", waktu: "5:00 PM" },
+      { acara: "Doa Puasa", hari: "Sabtu", waktu: "7:00 PM" },
+      { acara: "Connect Grup", hari: "Selasa", waktu: "6:30 PM" },
+      { acara: "Pelayanan Anak", hari: "Minggu", waktu: "10:00 AM" },
+      { acara: "Ibadah Remaja", hari: "Jumat", waktu: "7:00 PM" },
+      { acara: "Sekolah Alkitab", hari: "Rabu", waktu: "6:00 PM" }
     ],
-    events: [
-      { name: "Retreat Tahunan", date: "2024-08-15", time: "8:00 AM", location: "Puncak Bogor" },
-      { name: "Konferensi Pemuda", date: "2024-09-10", time: "9:00 AM", location: "Gereja C3 Pemulihan" }
+    acaraKhusus: [
+      { nama: "Retreat Tahunan", tanggal: "2024-08-15", waktu: "8:00 AM", lokasi: "Puncak Bogor" },
+      { nama: "Konferensi Pemuda", tanggal: "2024-09-10", waktu: "9:00 AM", lokasi: "Gereja C3 Pemulihan" }
     ]
   }
 };
 
-
-function getChurchInfo(churchName) {
-  const church = churchInfo[churchName];
-  if (church) {
-    let response = `${church.description}\n\nAddress: ${church.address}\nPastor: ${church.pastor}\nContact: Phone - ${church.contact.phone}, Email - ${church.contact.email}\n\nSchedule:\n`;
-    church.schedule.forEach(event => {
-      response += `${event.event} - ${event.day} at ${event.time}\n`;
+function getChurchInfo(namaGereja) {
+  const gereja = churchInfo[namaGereja];
+  if (gereja) {
+    let response = `${gereja.deskripsi}\n\nAlamat: ${gereja.alamat}\nPendeta: ${gereja.pendeta}\nKontak: Nomor - ${gereja.kontak.nomor}, Email - ${gereja.kontak.email}\n\nJadwal:\n`;
+    gereja.jadwal.forEach(acara => {
+      response += `${acara.acara} - ${acara.hari} pada ${acara.waktu}\n`;
     });
-    response += `\nUpcoming Events:\n`;
-    church.events.forEach(event => {
-      response += `${event.name} - ${event.date} at ${event.time}, Location: ${event.location}\n`;
+    response += `\nAcara Khusus:\n`;
+    gereja.acaraKhusus.forEach(acara => {
+      response += `${acara.nama} - ${acara.tanggal} pada ${acara.waktu}, Lokasi: ${acara.lokasi}\n`;
     });
     return response;
   } else {
-    return `Sorry, I don't have information for ${churchName}.`;
+    return `Maaf, saya tidak memiliki informasi untuk ${namaGereja}.`;
   }
 }
+
 
 
 app.set('view engine', 'ejs');
