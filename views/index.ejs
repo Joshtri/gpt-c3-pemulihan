@@ -2,22 +2,65 @@
 <html>
 <head>
   <title>C3 Pemulihan GPT</title>
-  <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <style>
+    body {
+      background-color: #ffffff; /* White background */
+      color: #d1cece; /* Dark gray text color */
+      font-family: Arial, sans-serif; /* Default font */
+      padding: 20px; /* Add some padding */
+    }
+    header {
+      text-align: center; /* Center align header content */
+      margin-bottom: 20px; /* Add margin below header */
+    }
+    h1 {
+      color: #333333; /* Dark gray heading color */
+    }
+    p {
+      line-height: 1.6; /* Increase line height for better readability */
+      color: #333333;
+    }
+    f orm {
+      margin-top: 20px; /* Add margin above form */
+    }
+    button {
+      background-color: #007bff; /* Blue button background */
+      color: #ffffff; /* White button text color */
+      border: none; /* Remove button border */
+      padding: 10px 20px; /* Add padding inside button */
+      cursor: pointer; /* Change cursor to pointer on hover */
+    }
+    button:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+    }
+    h2 {
+      color: 000000;
+
+      margin-top: 20px; /* Add margin above response header */
+    }
+    p.response {
+      background-color: #f0f0f0; /* Light gray background for response */
+      padding: 10px; /* Add padding around response */
+      border-radius: 5px; /* Rounded corners */
+    }
+  </style>
 </head>
 <body>
-  <h1>C3 Pemulihan-GPT</h1>
+  <header>
+    <img src="/logo4.png" alt="">
+  </header>
+  <h1>AI Chat - Q&A</h1>
+  <p>Gereja C3 Pemulihan Kupang menyediakan fitur AI chat yang bermanfaat bagi jemaat yang ingin tahu informasi spesifik mengenai jadwal ibadah di gereja C3 Pemulihan.</p>
   <form action="/chat" method="POST">
-    <label for="message">Enter your message:</label><br>
-    <input type="text" id="message" name="message" required><br><br>
-    <button type="submit">Send</button>
+    <label style="color: #333333;" for="message">Masukkan pertanyaan Anda:</label><br>
+    <input style="background-color: #d1cece; color: #333333;" type="text" id="message" name="message" required placeholder="silahkan bertanya 😁😇..."><br><br>
+    <button type="submit">Kirim</button>
   </form>
 
   <% if (response) { %>
-    <h2>Response from AI:</h2>
-    <p><%= response %></p>
+    <h2 >Respon dari AI:</h2>
+    <p class="response"><%= response %></p>
   <% } %>
 </body>
 </html>

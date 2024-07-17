@@ -77,7 +77,9 @@ app.post('/chat', async (req, res) => {
   let responseMessage;
 
   const lowerCasedMessage = userMessage.toLowerCase();
-  if (lowerCasedMessage.includes('c3 pemulihan')) {
+
+  // Cek apakah pesan berhubungan dengan C3 Pemulihan atau topik Kristen
+  if (lowerCasedMessage.includes('c3 pemulihan') || lowerCasedMessage.includes('gereja') || lowerCasedMessage.includes('ibadah') || lowerCasedMessage.includes('pdt') || lowerCasedMessage.includes('yesus') || lowerCasedMessage.includes('alkitab')) {
     responseMessage = getChurchInfo("C3 Pemulihan");
   } else {
     try {
@@ -97,6 +99,7 @@ app.post('/chat', async (req, res) => {
 
   res.render('index', { response: responseMessage });
 });
+
 
 app.listen(port, () => {
   console.log(`Server berjalan di http://localhost:${port}`);
