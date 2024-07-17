@@ -3,6 +3,7 @@
 <head>
   <title>C3 Pemulihan GPT</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <style>
     body {
       background-color: #ffffff; /* White background */
@@ -21,7 +22,7 @@
       line-height: 1.6; /* Increase line height for better readability */
       color: #333333;
     }
-    f orm {
+    form {
       margin-top: 20px; /* Add margin above form */
     }
     button {
@@ -30,13 +31,13 @@
       border: none; /* Remove button border */
       padding: 10px 20px; /* Add padding inside button */
       cursor: pointer; /* Change cursor to pointer on hover */
+      transition: background-color 0.3s ease; /* Smooth transition for background color */
     }
     button:hover {
       background-color: #0056b3; /* Darker blue on hover */
     }
     h2 {
-      color: 000000;
-
+      color: #000000; /* Black heading color */
       margin-top: 20px; /* Add margin above response header */
     }
     p.response {
@@ -48,19 +49,19 @@
 </head>
 <body>
   <header>
-    <img src="/logo4.png" alt="">
+    <img src="/logo4.png" alt="" class="animate__animated animate__fadeInDown">
   </header>
-  <h1>AI Chat - Q&A</h1>
-  <p>Gereja C3 Pemulihan Kupang menyediakan fitur AI chat yang bermanfaat bagi jemaat yang ingin tahu informasi spesifik mengenai jadwal ibadah di gereja C3 Pemulihan.</p>
+  <h1 class="animate__animated animate__bounce">AI Chat - Q&A</h1>
+  <p class="animate__animated animate__fadeIn">Gereja C3 Pemulihan Kupang menyediakan fitur AI chat yang bermanfaat bagi jemaat yang ingin tahu informasi spesifik mengenai jadwal ibadah di gereja C3 Pemulihan.</p>
   <form action="/chat" method="POST">
     <label style="color: #333333;" for="message">Masukkan pertanyaan Anda:</label><br>
     <input style="background-color: #d1cece; color: #333333;" type="text" id="message" name="message" required placeholder="silahkan bertanya 😁😇..."><br><br>
-    <button type="submit">Kirim</button>
+    <button type="submit" class="animate__animated animate__fadeInUp">Kirim</button>
   </form>
 
   <% if (response) { %>
-    <h2 >Respon dari AI:</h2>
-    <p class="response"><%= response %></p>
+    <h2 class="animate__animated animate__fadeInDown">Respon dari AI:</h2>
+    <p class="response animate__animated animate__fadeInUp"><%= response %></p>
   <% } %>
 </body>
 </html>
